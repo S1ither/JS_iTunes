@@ -1,0 +1,11 @@
+{
+  "name": "js_itunes",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "repository": "https://github.com/S1ither/JS_iTunes.git",
+  "author": "Egor <39993671+S1ither@users.noreply.github.com>",
+  "license": "Mozilla Public License Version 2.0",
+  "scripts": {
+    "build": "tsc"
+  }
+}
