@@ -1,8 +1,7 @@
 //#region Import's
 //import {} from "./musicPlayer/index";
-//import {} from "./videoPlayer/index";
+import VideoPlayer from "./videoPlayer/index.js";
 //import {} from "./audioPlayer/index";
-
 //#endregion
 
 //#region Variables
@@ -34,5 +33,5 @@ for (const [key, item] of playerBtn.entries()) {
 	});
 }
 
-
+new VideoPlayer(".video-container");
 //#endregion
