@@ -5,6 +5,7 @@ export default class VideoPlayer extends PlayerControlls {
 		const _object_ = document.querySelector(target);
 		if (!_object_) return;
 		super(_object_.children[0], _object_.children[1].children);
+		if (!_object_.parentElement?.parentElement?.classList.contains("active")) this.stop();
 		const addZero: (num: number) => string | number = (num: number) => (num < 10 ? "0" + num : num);
 		this.mediaObject.addEventListener("click", () => this.tooglePlayer());
 		this.mediaObject.addEventListener("play", () => this.toogleIcons("fa-play", "fa-pause"));
@@ -24,6 +25,18 @@ export default class VideoPlayer extends PlayerControlls {
 		});
 		this.mediaControls.progressBar.addEventListener("change", () => {
 			this.mediaObject.currentTime = (this.mediaControls.progressBar.value * this.mediaObject.duration) / 100;
+		});
+		this.mediaControls.buttonVolumeDown.addEventListener("click", () => {
+			this.volumeDown();
+		});
+		this.mediaControls.buttonVolumeUp.addEventListener("click", () => {
+			this.volumeUp();
+		});
+		this.mediaControls.volumeBar.addEventListener("change", () => {
+			this.mediaObject.volume = this.mediaControls.volumeBar.value / 100;
+		});
+		this.mediaObject.addEventListener("volumechange", () => {
+			this.mediaControls.volumeBar.value = this.mediaObject.volume * 100;
 		});
 	}
 }

@@ -7,6 +7,9 @@ export default class PlayerControlls {
             timeCurrent: second_target[2],
             progressBar: second_target[3],
             timeEnd: second_target[4],
+            buttonVolumeDown: second_target[5],
+            volumeBar: second_target[6],
+            buttonVolumeUp: second_target[7],
         };
     }
     play() {
@@ -54,5 +57,19 @@ export default class PlayerControlls {
             this.pause();
             this.toogleIcons("fa-pause", "fa-play");
         }
+    }
+    volumeDown(num) {
+        if (this.mediaObject.volume <= 0 || this.mediaObject.volume - (num ? num : 10) / 100 < 0)
+            this.mediaObject.volume = 0;
+        else
+            this.mediaObject.volume -= (num ? num : 10) / 100;
+        return;
+    }
+    volumeUp(num) {
+        if (this.mediaObject.volume >= 1 || this.mediaObject.volume - (num ? num : 10) / 100 > 1)
+            this.mediaObject.volume = 1;
+        else
+            this.mediaObject.volume += (num ? num : 10) / 100;
+        return;
     }
 }

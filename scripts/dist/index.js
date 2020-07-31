@@ -1,7 +1,7 @@
 //#region Import's
-//import {} from "./musicPlayer/index";
+import MusicPlayer from "./musicPlayer/index.js";
 import VideoPlayer from "./videoPlayer/index.js";
-//import {} from "./audioPlayer/index";
+import RadioPlayer from "./radioPlayer/index.js";
 //#endregion
 //#region Variables
 const playerBtn = document.querySelectorAll(".player-btn");
@@ -11,7 +11,7 @@ const temp = document.querySelector(".temp");
 //#region Other
 for (const [key, item] of playerBtn.entries()) {
     item.addEventListener("click", () => {
-        var _a;
+        var _a, _b, _c;
         if (temp &&
             !((_a = temp
                 .getAttribute("style")) === null || _a === void 0 ? void 0 : _a.split(";").find((fn) => fn.split(":")[0] == "display")))
@@ -22,9 +22,15 @@ for (const [key, item] of playerBtn.entries()) {
         for (const item of playerBtn) {
             item.classList.remove("active");
         }
+        let t = (_b = document.querySelector(".video")) === null || _b === void 0 ? void 0 : _b.children[0].children[0].children[0];
+        t.pause();
+        t = (_c = document.querySelector(".audio")) === null || _c === void 0 ? void 0 : _c.children[0].children[0].children[2];
+        t.pause();
         item.classList.add("active");
         playerBlock[key].classList.add("active");
     });
 }
 new VideoPlayer(".video-container");
+new RadioPlayer( /* ".radio" */).main();
+new MusicPlayer( /* ".radio" */).main();
 //#endregion
